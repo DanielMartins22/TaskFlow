@@ -5,44 +5,50 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
     function addTask() {
-        const taskText = taskInput.value.trim();
 
-        if(taskText === '') {
-            alert('Digite uma Tarefa')
-            return
+        const valueTask = taskInput.value.trim();
+
+        if(valueTask === '') {
+            alert('Digitar a Tarefa');
+            return;
         }
 
-        const liTask = document.createElement('li')
+        const liTask = document.createElement('li');
 
-        
+        const checkBox = document.createElement('input');
+        checkBox.type = 'checkbox';
+        checkBox.className = 'task-checkbox';
 
-        const checkBox = document.createElement('input')
-        checkBox.type = 'checkbox' 
-        checkBox.className = 'task-checkbox'
+        const spanTask = document.createElement('span');
+        spanTask.className = 'task-text';
+        spanTask.textContent = valueTask;
 
-        const spantask = document.createElement('span')
-        spantask.className = 'task-text'
-        spantask.textContent = taskText
+        const deleteButton = document.createElement('button');
+        deleteButton.className = 'delete-button';
+        deleteButton.textContent = '❌';
 
-
-        const buttonDelete = document.createElement('button')
-        buttonDelete.textContent = '❌'
-        buttonDelete.className = 'delete-button'
-
-
-        
         liTask.appendChild(checkBox);
-        liTask.appendChild(spantask);
-        liTask.appendChild(buttonDelete);
+        liTask.appendChild(spanTask);
+        liTask.appendChild(deleteButton);
 
-        taskList.appendChild(liTask)
+        taskList.appendChild(liTask);
 
 
-        taskInput.value = ''
+        taskInput.value = '';
+
+        
+
+
+        checkBox.addEventListener('change' , function() {
+            liTask.classList.toggle('completed');
+        })
+
+        deleteButton.addEventListener('click', function() {
+            liTask.remove()
+        })
         
     }
-
-    addTaskButton.addEventListener('click', addTask)
+    addTaskButton.addEventListener('click' , addTask);    
 
 
 
