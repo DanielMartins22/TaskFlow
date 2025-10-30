@@ -1,0 +1,295 @@
+/* ========== IMPORTAÇÃO DA FONTE GOOGLE FONTS ========== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+
+/* ========== RESET E CONFIGURAÇÕES GERAIS ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', 'Roboto', -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    background: #f5f7fa;
+    color: #2c3e50;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+/* ========== CONTAINER PRINCIPAL ========== */
+.container {
+    background: #ffffff;
+    max-width: 600px;
+    width: 100%;
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.1);
+}
+
+/* ========== TÍTULO PRINCIPAL ========== */
+h1 {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: -0.5px;
+}
+
+/* ========== ÁREA DE INPUT ========== */
+.input-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+#task-input {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #2c3e50;
+    background: #ffffff;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    width: 100%;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+#task-input::placeholder {
+    color: #a0a0a0;
+    font-size: 15px;
+}
+
+#task-input:focus {
+    border: 2px solid #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+}
+
+/* ========== BOTÃO ADICIONAR ========== */
+.add-button {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffffff;
+    background: #4a90e2;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: none;
+}
+
+.add-button:hover {
+    background: #64b5f6;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+.add-button:active {
+    transform: translateY(0);
+}
+
+/* ========== LISTA DE TAREFAS ========== */
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#task-list li {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: #2c3e50;
+    background: #f8f9fa;
+    border-left: 4px solid #4a90e2;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    gap: 12px;
+}
+
+#task-list li:hover {
+    background: #f0f2f5;
+    transform: translateX(4px);
+}
+
+/* ========== TAREFA CONCLUÍDA ========== */
+#task-list li.completed {
+    background: #e8f5e9;
+    border-left: 4px solid #27ae60;
+    color: #6c757d;
+    text-decoration: line-through;
+}
+
+#task-list li.completed:hover {
+    background: #d4edda;
+}
+
+/* ========== TEXTO DA TAREFA ========== */
+.task-text {
+    font-size: 16px;
+    flex: 1;
+    word-break: break-word;
+}
+
+/* ========== CHECKBOX ========== */
+.task-checkbox {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    border: 2px solid #4a90e2;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    position: relative;
+}
+
+.task-checkbox:checked {
+    background: #27ae60;
+    border-color: #27ae60;
+}
+
+.task-checkbox:checked::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+/* ========== BOTÃO DELETAR ========== */
+.delete-button {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #e74c3c;
+    background: transparent;
+    border: 1px solid #e74c3c;
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 70px;
+}
+
+.delete-button:hover {
+    background: #e74c3c;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* ========== MENSAGEM LISTA VAZIA ========== */
+.empty-message {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: #a0a0a0;
+    text-align: center;
+    padding: 40px 20px;
+    font-style: italic;
+}
+
+/* ========== FOOTER ========== */
+footer {
+    margin-top: auto;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #6c757d;
+}
+
+footer a {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a90e2;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #64b5f6;
+    text-decoration: underline;
+}
+
+/* ========== RESPONSIVIDADE ========== */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        padding: 24px;
+        margin: 20px auto;
+    }
+
+    h1 {
+        font-size: 26px;
+        margin-bottom: 24px;
+    }
+
+    #task-input {
+        font-size: 15px;
+        padding: 12px 14px;
+    }
+
+    .add-button {
+        font-size: 15px;
+        padding: 12px 20px;
+    }
+
+    #task-list li {
+        font-size: 15px;
+        padding: 14px 16px;
+    }
+
+    .delete-button {
+        font-size: 13px;
+        padding: 5px 10px;
+        min-width: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 22px;
+    }
+
+    #task-input {
+        font-size: 14px;
+    }
+
+    .add-button {
+        font-size: 14px;
+    }
+
+    #task-list li {
+        font-size: 14px;
+        padding: 12px 14px;
+    }
+}
