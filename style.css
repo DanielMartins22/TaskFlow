@@ -199,6 +199,51 @@ h1 {
     transform: scale(1.05);
 }
 
+/* ========== BOTÃO EDITAR ========== */
+
+.edit-button {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #3498db; /* Azul */
+    background: transparent;
+    border: 1px solid #3498db;
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 70px;
+    margin-right: 8px; /* Espaço entre editar e deletar */
+}
+
+.edit-button:hover {
+    background: #3498db;
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* ========== CAMPO DE EDIÇÃO ========== */
+.task-edit-input {
+  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.task-edit-input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 4px rgba(52, 152, 219, 0.5);
+}
+
+
+
 /* ========== MENSAGEM LISTA VAZIA ========== */
 .empty-message {
     font-family: 'Inter', 'Segoe UI', sans-serif;

@@ -4,51 +4,120 @@ document.addEventListener('DOMContentLoaded', function() {
     const taskList = document.getElementById('task-list');
     
 
-    function addTask() {
+    function addTask () {
 
         const valueTask = taskInput.value.trim();
 
         if(valueTask === '') {
-            alert('Digitar a Tarefa');
+            alert('Para adicionar digite uma tarefa!');
             return;
         }
 
         const liTask = document.createElement('li');
 
-        const checkBox = document.createElement('input');
-        checkBox.type = 'checkbox';
-        checkBox.className = 'task-checkbox';
+        const checkBoxTask = document.createElement('input');
+        checkBoxTask.className = 'task-checkbox';
+        checkBoxTask.type = 'checkbox';
 
-        const spanTask = document.createElement('span');
-        spanTask.className = 'task-text';
-        spanTask.textContent = valueTask;
+        const spanTask = document.createElement('span')
+        spanTask.className = 'task-text'
+        spanTask.textContent = valueTask
 
-        const deleteButton = document.createElement('button');
-        deleteButton.className = 'delete-button';
-        deleteButton.textContent = '❌';
+        const deleteTask = document.createElement('button')
+        deleteTask.className = 'delete-button'
+        deleteTask.textContent = '❌'
 
-        liTask.appendChild(checkBox);
-        liTask.appendChild(spanTask);
-        liTask.appendChild(deleteButton);
+        const editTask = document.createElement('button')
+        editTask.className = 'edit-button'
+        editTask.textContent = '✏️'
 
-        taskList.appendChild(liTask);
+        liTask.appendChild(checkBoxTask)
+        liTask.appendChild(spanTask)
+        liTask.appendChild(deleteTask)
+        liTask.appendChild(editTask)
+
+        taskList.appendChild(liTask)
 
 
-        taskInput.value = '';
-
+        taskInput.value = ''
         
 
 
-        checkBox.addEventListener('change' , function() {
-            liTask.classList.toggle('completed');
+
+        checkBoxTask.addEventListener('change' , function () {
+            liTask.classList.toggle('completed')
         })
 
-        deleteButton.addEventListener('click', function() {
+
+        deleteTask.addEventListener('click' , function () {
             liTask.remove()
         })
-        
+
+        editTask.addEventListener('click' , function() {
+            const textEdit = spanTask.textContent;
+
+            const inputEdit = document.createElement('input');
+            inputEdit.type = 'text';
+            inputEdit.value = textEdit;
+            inputEdit.className = 'task-edit-input'
+
+            liTask.replaceChild(inputEdit , spanTask);
+            editTask.textContent = '💾';
+            inputEdit.focus()
+
+
+            function saveEdit () {
+                const newText = inputEdit.value.trim()
+
+                if(newText === '') {
+                    alert ('Digite algo para salvar a edição')
+                    inputEdit.focus()
+                    return
+                }
+
+                spanTask.className = 'task-text'
+                spanTask.textContent = newText
+                
+
+                const newSpan = document.createElement('span')
+                newSpan.className = 'task-text'
+                newSpan.textContent = newText
+
+                liTask.replaceChild(newSpan , inputEdit)
+                editTask.textContent = '✏️';
+                spanTask = newSpan;
+
+            }
+
+
+            inputEdit.addEventListener("keydown" , function (event) {
+                if(event.key === 'Enter') {
+                    saveEdit()
+                }
+            })
+
+            inputEdit.addEventListener('blur' , function () {
+                saveEdit()
+            })
+            
+
+        })
+
+
     }
-    addTaskButton.addEventListener('click' , addTask);    
+
+    addTaskButton.addEventListener('click' , addTask)
+
+    taskInput.addEventListener('keypress' , function(event) {
+        if(event.key === 'Enter') {
+            addTask()
+        }
+    })
+
+
+
+
+    
 
 
 
