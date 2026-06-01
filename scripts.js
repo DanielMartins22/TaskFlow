@@ -4,6 +4,37 @@ document.addEventListener('DOMContentLoaded', function () {
     const taskList = document.getElementById('task-list');
 
 
+    const buttonChangeColor = document.getElementById('change-color')
+
+    const imgForbutton  = {
+        lua:'./img/lua.jpg', alt:'ícone-da-lua',
+        sol:'./img/sol.png', alt:'ícone-do-sol'
+    }
+
+    const icon = document.createElement('img')
+    icon.src = imgForbutton.lua
+    icon.alt = imgForbutton.alt
+    icon.style.width = '45px'
+    icon.style.height = '45px'
+
+    buttonChangeColor.appendChild(icon)
+
+    function changeColor () {
+        const body = document.body
+        const isDarkMode = body.classList.toggle('dark-mode')
+
+        if (isDarkMode) {
+            icon.src = imgForbutton.sol
+            
+        } else {
+            icon.src = imgForbutton.lua
+        }
+    }
+
+    buttonChangeColor.addEventListener('click', changeColor)
+
+
+
     function addTask() {
 
         const valueTask = taskInput.value.trim();
